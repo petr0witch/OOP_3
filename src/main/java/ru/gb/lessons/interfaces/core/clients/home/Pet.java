@@ -12,7 +12,13 @@ import java.time.LocalDate;
 public class Pet extends Animal implements Animals {
     public Pet() {
     }
+
     public Pet(int id, String name, int numberOfLimbs, LocalDate registrationDate, Owner owner) {
         super(id, name, numberOfLimbs, registrationDate, owner);
+    }
+
+    @Override
+    public String getClassName() {
+        return name;
     }
 }

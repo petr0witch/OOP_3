@@ -1,49 +1,13 @@
 package ru.gb.lessons.interfaces.core.personal;
 
-import ru.gb.lessons.interfaces.core.clients.DoctorSpecialities;
-import ru.gb.lessons.interfaces.core.clients.NurseSpecialities;
+public class Nurse extends ClinicStaff implements Doing {
+    public Nurse() {
 
-import java.time.LocalDate;
-import java.util.LinkedHashMap;
-
-import static ru.gb.lessons.interfaces.core.clients.DoctorSpecialities.THERAPIST;
-
-public class Nurse {
-    protected int vetPersonID;
-    protected String fio;
-    protected NurseSpecialities speciality;
-    protected String phoneNumber;
-    public Nurse (int id, String fio, NurseSpecialities speciality, String phone) {
-        vetPersonID = id;
-        this.fio = fio;
-        this.speciality = speciality;
-        this.phoneNumber = phone;
     }
-    public Nurse (int id) {
-        this(id, null, null, null);
+    public Nurse(String name, String profession) {
+        super(name, profession);
     }
-    public String getFIO () {
-        return this.fio;
+    public String doVaccine(){
+        return (getName() + " вакцинировала питомца: " );
     }
-    public void setFIO (String fio) {
-        this.fio = fio;
-    }
-    public NurseSpecialities getSpeciality () {
-        return this.speciality;
-    }
-    public void setSpeciality (NurseSpecialities speciality) {
-        this.speciality = speciality;
-    }
-    protected int getNurseID () { return this.vetPersonID; }
-    public void showNurseBriefInfo () {}
-    public boolean makeInjection (int patientID, String drugName, double dose) {
-        return true;
-    }
-    public boolean putDrip (int patientID, String drugName, double volume) {
-        return true;
-    }
-    public boolean makeDressing (int patientID, String bodyPart, String drug) {
-        return true;
-    }
-
 }

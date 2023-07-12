@@ -11,11 +11,11 @@ import java.util.List;
 /**
   Абстракция животного - пациента ветклиники.
  */
-public abstract class  Animal {
+public abstract class Animal {
+    protected final String CLASS_NAME = getClass().getSimpleName();
+    // Поля класса отвечают за СОСТОЯНИЕ Объекта
 
-    protected final String CLASS_NAME = "The " + getClass().getSimpleName();
 
-//  Поля класса отвечают за СОСТОЯНИЕ ОБЪЕКТА
     protected int id; //идентификатор животного для хранения в БД
     protected String name; // кличка животного
     protected int numberOfLimbs; //количество конечностей
@@ -35,10 +35,21 @@ public abstract class  Animal {
         this.records = new ArrayList<>();
     }
 
-//  Методы класса отвечают за ПОВЕДЕНИЕ ОБЪЕКТА
-    protected void addRecord (Record record) {
+    // Методы класса отвечают за ПОВЕДЕНИЕ Объекта
+    protected void addRecord(Record record) {
         //todo реализовать
+
     }
+
+//    public void fly() {
+//        System.out.println(CLASS_NAME + " flying.");
+//    }
+
+
+
+//    public void run() {
+//        System.out.println(CLASS_NAME + " is moving.");
+//    }
 
     //todo ПО ПРАВИЛАМ "ЧИСТОГО КОДА", МЕТОДЫ, ВЫЗЫВАЕМЫЕ ВНУТРИ ДРУГОГО МЕТОДА,
     // ЛУЧШЕ РАСПОЛАГАТЬ СРАЗУ ПОД ЭТИМ МЕТОДОМ
@@ -118,16 +129,17 @@ public abstract class  Animal {
 
     @Override
     public String toString() {
-        return CLASS_NAME + " {" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", numberOfLimbs=" + numberOfLimbs +
-                ", registrationDate=" + registrationDate +
-                ", owner=" + owner +
-                ", records=" + records +
-                '}';
+        return CLASS_NAME + " {" + // не static, so обращение к экземпляру
+                "id = " + id +
+                ", name = " + name +
+                ", owner = " + owner +
+                ", records = " + records
+                + "}";
     }
-    public String getClassName() {
+
+    public String getCLASS_NAME(){
         return this.CLASS_NAME;
     }
+
+
 }

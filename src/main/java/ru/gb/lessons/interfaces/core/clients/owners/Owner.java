@@ -19,17 +19,8 @@ public class Owner extends Human {
     }
 
     public List<Animal> getPets() {
-
         return pets;
     }
 
-    public void setPet(Animal nextPet) {
-        pets.add(nextPet);
-    }
 
-    @Override
-    public String toString() {
-        String result = this.getFullName();
-        return result;
-    }
 }

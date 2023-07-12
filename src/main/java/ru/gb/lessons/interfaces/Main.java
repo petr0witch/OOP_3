@@ -3,13 +3,11 @@ package ru.gb.lessons.interfaces;
 import ru.gb.lessons.interfaces.core.clients.home.impl.Cat;
 import ru.gb.lessons.interfaces.core.clients.home.impl.Dog;
 import ru.gb.lessons.interfaces.core.clients.owners.Owner;
-import ru.gb.lessons.interfaces.core.clients.wild.impl.Duck;
 import ru.gb.lessons.interfaces.core.clients.wild.impl.WildCat;
+import ru.gb.lessons.interfaces.core.personal.Doctor;
+import ru.gb.lessons.interfaces.core.personal.Nurse;
 
 import java.time.LocalDate;
-import java.lang.Class;
-import java.util.Arrays;
-
 /**
  Небольшая шпаргалка по синтаксису java:
 
@@ -20,7 +18,7 @@ import java.util.Arrays;
  -! Если логика классов внутри пакета не позволяет назвать все в одно существительное, надо вложить один пакет в другой.
  */
 public class Main {
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) {
         Cat homeCat =
                 new Cat(2, "Tom", 4, LocalDate.of(2022, 4,13), new Owner("Ivanov Ivan"));
 
@@ -30,21 +28,22 @@ public class Main {
 
         homeCat.hunt();
         wildCat.hunt();
+        System.out.println(wildCat);
+        System.out.println("________________________________________________");
 
-        Dog dog = new Dog();
-        dog.setName("Barbos");
+        Cat dymka = new Cat();
+        dymka.setName("Дымка");
 
-        System.out.println(homeCat);
-        System.out.println(dog);
+        Dog dog1 = new Dog();
+        dog1.setName("Пёс");
 
-        Duck duck = new Duck();
-        System.out.println(duck);
-        String typeOfElements;
-        typeOfElements = String.valueOf(Class.forName(String.valueOf(duck.getClass().getInterfaces()[0].getTypeName())));
-        System.out.println(typeOfElements);
-        if (typeOfElements.contains("Flyable")) {
-            System.out.println("Утка бегает");
-        }
-        System.out.println(Arrays.asList(duck.getClass().getInterfaces()));
-        }
+        Doctor doc1 = new Doctor("Александр", "Хирург"); // Хирург
+        doc1.firstView();
+        System.out.println(doc1.doVaccine() + dymka.getName());
+
+        Nurse nurse1 = new Nurse("Мария","Медсестра");
+        System.out.println(nurse1.doVaccine() + dog1.getName());
+
+        System.out.println(doc1.doOperation() + dog1.getName());
     }
+}
